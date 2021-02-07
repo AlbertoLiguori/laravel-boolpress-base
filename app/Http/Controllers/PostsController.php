@@ -25,6 +25,7 @@ class PostsController extends Controller
           'title' => 'Title',
           'author' => 'Author',
           'description' => 'Description',
+          'tags' => 'Related Tags',
           'created_at' => "Created At",
           'updated_at' => "Updated At",
           'actions' => 'CRUD'

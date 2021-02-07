@@ -22,6 +22,18 @@
         <td>{{$post['title']}}</td>
         <td>{{$post['author']}}</td>
         <td>{{$post->postInformation->description}}</td>
+
+        <td>
+            <ul>
+
+            @foreach($post->tags as $tag)
+              <li>{{$tag->name}}</li>
+            @endforeach
+
+            </ul>
+
+        </td>
+
         <td>{{$post['created_at']}}</td>
         <td>{{$post['updated_at']}}</td>
         <td> <a href="{{route('posts.show',$post['id'])}}"> Retrieve </a>
@@ -37,6 +49,9 @@
              </form>
 
         </td>
+
+
+
       </tr>
 
     @endforeach
