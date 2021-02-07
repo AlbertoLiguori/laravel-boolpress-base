@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', '/posts');
 
 Route::resource('posts', 'PostsController');
+Route::resource('tags', 'TagsController');

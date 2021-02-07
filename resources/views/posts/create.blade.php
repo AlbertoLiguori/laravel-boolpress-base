@@ -38,6 +38,21 @@
                       <textarea id="inputDescription" rows="8" cols="80" name="input_description"> </textarea>
                   </div>
 
+                  <fieldset>
+                          <legend>Scegli i Tag:</legend>
+
+                            @foreach($tags as $tag)
+
+                              <div>
+                                <input type="checkbox" id="{{'inputChk' . $tag->name}}" name="tags[]" value="{{$tag->id}}">
+                                <label for="{{'inputChk' . $tag->name}}">{{$tag->name}}</label>
+                              </div>
+
+                            @endforeach
+
+
+                  </fieldset>
+
                   <div class="col-12">
                     <button type="submit" class="btn btn-primary">Create</button>
                   </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
 use App\PostInformation;
+use App\Tag;
 
 class PostsController extends Controller
 {
@@ -42,7 +43,8 @@ class PostsController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('posts.create',compact('categories'));
+        $tags = Tag::all();
+        return view('posts.create',compact(['categories','tags']));
     }
 
     /**
@@ -74,6 +76,10 @@ class PostsController extends Controller
         //Attenzione!!!!(sia all'ordine che ad inserire il valore della foreign Key)
         $newPostInformation->post_id = $newPost->id;
         $newPostInformation->save();
+
+        foreach($data['tags'] as $tagId){
+          $newPost->tags()->attach($tagId);
+        }
 
         return view('posts.success');
     }
@@ -138,6 +144,10 @@ class PostsController extends Controller
       $post= Post::find($id);
 
       $post->postInformation->delete();
+      foreach($post->tags as $tag){
+        $post->tags()->detach($tag->id);
+      }
+
       $post->delete();
 
       return redirect()->route('posts.index');
