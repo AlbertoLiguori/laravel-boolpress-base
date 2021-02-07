@@ -18,6 +18,10 @@
                   </li>
 
                   <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{{route('tags.index')}}">Tags</a>
+                  </li>
+
+                  <li class="nav-item">
                     <a class="nav-link" href="{{route('posts.create')}}">Create New Post</a>
                   </li>
 

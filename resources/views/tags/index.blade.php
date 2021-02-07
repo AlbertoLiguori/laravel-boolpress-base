@@ -8,7 +8,7 @@
     <tr>
 
       <th scope="col">ID</th>
-      <th scope="col">Title</th>
+      <th scope="col">Tag</th>
       <th scope="col">Posts</th>
 
     </tr>
