@@ -6,7 +6,6 @@
           @csrf
           @method('post')
 
-
                   <div class="col-md-6">
                     <label for="inputTitle" class="form-label">Title:</label>
                     <input type="text" class="form-control" id="inputTitle" name="input_title">
@@ -16,8 +15,6 @@
                     <label for="inputAuthor" class="form-label">Author:</label>
                     <input type="text" class="form-control" id="inputAuthor" name="input_author">
                   </div>
-
-
 
                   <div class="col-md-4">
                     <label for="inputCategory" class="form-label">Category</label>
@@ -39,6 +36,7 @@
                   </div>
 
                   <fieldset>
+                    
                           <legend>Scegli i Tag:</legend>
 
                             @foreach($tags as $tag)
@@ -49,7 +47,6 @@
                               </div>
 
                             @endforeach
-
 
                   </fieldset>
 

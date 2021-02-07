@@ -6,7 +6,6 @@
           @csrf
           @method('PUT')
 
-
                   <div class="col-md-6">
                     <label for="inputTitle" class="form-label">Title:</label>
                     <input type="text" class="form-control" id="inputTitle" name="input_title" value="{{$oldPost['title']}}">
@@ -36,6 +35,21 @@
                       <label for="inputDescription" class="form-label">Description:</label>
                       <textarea id="inputDescription" rows="8" cols="80" name="input_description">{{$oldPost->postInformation->description}} </textarea>
                   </div>
+
+                <fieldset>
+
+                          <legend>Scegli i Tag:</legend>
+
+                            @foreach($tags as $tag)
+
+                              <div>
+                                <input type="checkbox" id="{{'inputChk' . $tag->name}}" name="tags[]" value="{{$tag->id}}">
+                                <label for="{{'inputChk' . $tag->name}}">{{$tag->name}}</label>
+                              </div>
+
+                            @endforeach
+
+                  </fieldset>
 
                   <div class="col-12">
                     <button type="submit" class="btn btn-primary">Update</button>

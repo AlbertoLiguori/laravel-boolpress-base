@@ -106,7 +106,8 @@ class PostsController extends Controller
     {
         $categories = Category::all();
         $oldPost = Post::find($id);
-        return view('posts.edit', compact(['oldPost', 'categories']));
+        $tags = Tag::all();
+        return view('posts.edit', compact(['oldPost', 'categories','tags']));
     }
 
     /**
@@ -118,7 +119,11 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
+      $data = $request->all();
+
       $oldPost = Post::find($id);
+
+      $oldPost->tags()->detach();
 
       $oldPost->title = $request->input('input_title');
       $oldPost->category_id = $request->input('input_category_id');
@@ -130,15 +135,20 @@ class PostsController extends Controller
 
       $oldPost->postInformation->save();
 
+      foreach($data['tags'] as $tagId){
+        $oldPost->tags()->attach($tagId);
+      }
+
       return view('posts.success');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @ param  int  $id
+     * @ return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
       $post= Post::find($id);
