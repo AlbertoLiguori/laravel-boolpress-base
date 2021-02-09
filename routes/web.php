@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route::get('/', '/posts');
-
+Auth::routes();
 Route::resource('posts', 'PostsController');
 Route::resource('tags', 'TagsController');
+
+
+
+Route::get('/', 'HomeController@index')->name('home');
