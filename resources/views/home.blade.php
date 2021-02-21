@@ -15,6 +15,11 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    <div class="">
+                      
+                          <a href="{{route('posts.index')}}">Procedi al Forum</a>
+
+                    </div>
                 </div>
             </div>
         </div>
